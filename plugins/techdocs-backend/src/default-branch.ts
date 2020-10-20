@@ -229,7 +229,10 @@ export const getDefaultBranch = async (
   repositoryUrl: string,
 ): Promise<string> => {
   // TODO(Rugvip): Config should not be loaded here, pass it in instead
-  const config = await loadBackendConfig({ logger: getRootLogger() });
+  const config = await loadBackendConfig({
+    logger: getRootLogger(),
+    argv: process.argv,
+  });
   const typeMapping = [
     { url: /github*/g, type: 'github' },
     { url: /gitlab*/g, type: 'gitlab' },
